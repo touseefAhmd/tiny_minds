@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiny_minds/screens/shape_match_start_screen.dart';
 import 'package:tiny_minds/screens/teacher_dashboard_sceen.dart';
 
 import '../models/student.dart';
@@ -7,6 +8,7 @@ import '../theme/app_theme.dart';
 import '../widgets/app_background.dart';
 import '../widgets/game_card.dart';
 import 'alphabet_fun_start_screen.dart';
+import 'animal_match_start_screen.dart';
 import 'color_match_screen.dart';
 import 'memory_match_start_screen.dart';
 import 'number_fun_screen.dart';
@@ -124,6 +126,34 @@ class _HomeScreenState extends State<HomeScreen> {
       context,
       MaterialPageRoute(
         builder: (_) => MemoryMatchStartScreen(
+          student: _student!,
+        ),
+      ),
+    );
+  }
+  void _openAnimalMatch() {
+    if (_student == null) {
+      return;
+    }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => AnimalMatchStartScreen(
+          student: _student!,
+        ),
+      ),
+    );
+  }
+  void _openShapeMatch() {
+    if (_student == null) {
+      return;
+    }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ShapeMatchStartScreen(
           student: _student!,
         ),
       ),
@@ -418,21 +448,19 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       _GameInfo(
         title: 'Shape Match',
-        subtitle: 'Discover shapes',
+        subtitle: 'Learn different shapes',
         emoji: '🔷',
-        color:
-        const Color(0xFFCFF2DF),
-        available: false,
-        onTap: () {},
+        color: const Color(0xFFFFD6E7),
+        available: true,
+        onTap: _openShapeMatch,
       ),
       _GameInfo(
         title: 'Animal Match',
-        subtitle: 'Meet the animals',
+        subtitle: 'Learn about animals',
         emoji: '🐾',
-        color:
-        const Color(0xFFFFD6B3),
-        available: false,
-        onTap: () {},
+        color: const Color(0xFFD9F7E3),
+        available: true,
+        onTap: _openAnimalMatch,
       ),
     ];
 
